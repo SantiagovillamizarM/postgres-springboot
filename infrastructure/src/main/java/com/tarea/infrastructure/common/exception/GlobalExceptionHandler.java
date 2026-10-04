@@ -26,6 +26,32 @@ import com.tarea.application.messagetype.exception.MessageTypeNotFoundApplicatio
 import com.tarea.application.airunstatus.exception.AiRunStatusNotFoundApplicationException;
 import com.tarea.application.escalationstatus.exception.EscalationStatusNotFoundApplicationException;
 import com.tarea.application.providermodelai.exception.ProviderModelAiNotFoundApplicationException;
+import com.tarea.application.aimodel.exception.AiModelNotFoundApplicationException;
+import com.tarea.application.professional.exception.ProfessionalNotFoundApplicationException;
+import com.tarea.application.professionalstudy.exception.ProfessionalStudyNotFoundApplicationException;
+import com.tarea.application.patient.exception.PatientNotFoundApplicationException;
+import com.tarea.application.patientallergy.exception.PatientAllergyNotFoundApplicationException;
+import com.tarea.application.contact.exception.ContactNotFoundApplicationException;
+import com.tarea.application.phonecontact.exception.PhoneContactNotFoundApplicationException;
+import com.tarea.application.emailcontact.exception.EmailContactNotFoundApplicationException;
+import com.tarea.application.patientcontact.exception.PatientContactNotFoundApplicationException;
+import com.tarea.application.clinicalrecord.exception.ClinicalRecordNotFoundApplicationException;
+import com.tarea.application.encounter.exception.EncounterNotFoundApplicationException;
+import com.tarea.application.clinicalnote.exception.ClinicalNoteNotFoundApplicationException;
+import com.tarea.application.mentalstatusexam.exception.MentalStatusExamNotFoundApplicationException;
+import com.tarea.application.riskassessment.exception.RiskAssessmentNotFoundApplicationException;
+import com.tarea.application.treatmentplan.exception.TreatmentPlanNotFoundApplicationException;
+import com.tarea.application.treatmentgoal.exception.TreatmentGoalNotFoundApplicationException;
+import com.tarea.application.chatconversation.exception.ChatConversationNotFoundApplicationException;
+import com.tarea.application.chatparticipant.exception.ChatParticipantNotFoundApplicationException;
+import com.tarea.application.chatmessage.exception.ChatMessageNotFoundApplicationException;
+import com.tarea.application.chatconversationaisetting.exception.ChatConversationAiSettingNotFoundApplicationException;
+import com.tarea.application.chatairun.exception.ChatAiRunNotFoundApplicationException;
+import com.tarea.application.chatairunmetric.exception.ChatAiRunMetricNotFoundApplicationException;
+import com.tarea.application.chatairunerror.exception.ChatAiRunErrorNotFoundApplicationException;
+import com.tarea.application.chatescalation.exception.ChatEscalationNotFoundApplicationException;
+import com.tarea.application.chatescalationassignment.exception.ChatEscalationAssignmentNotFoundApplicationException;
+import com.tarea.application.chatescalationstatushistory.exception.ChatEscalationStatusHistoryNotFoundApplicationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -66,7 +92,33 @@ public class GlobalExceptionHandler {
             MessageTypeNotFoundApplicationException.class,
             AiRunStatusNotFoundApplicationException.class,
             EscalationStatusNotFoundApplicationException.class,
-            ProviderModelAiNotFoundApplicationException.class
+            ProviderModelAiNotFoundApplicationException.class,
+            AiModelNotFoundApplicationException.class,
+            ProfessionalNotFoundApplicationException.class,
+            ProfessionalStudyNotFoundApplicationException.class,
+            PatientNotFoundApplicationException.class,
+            PatientAllergyNotFoundApplicationException.class,
+            ContactNotFoundApplicationException.class,
+            PhoneContactNotFoundApplicationException.class,
+            EmailContactNotFoundApplicationException.class,
+            PatientContactNotFoundApplicationException.class,
+            ClinicalRecordNotFoundApplicationException.class,
+            EncounterNotFoundApplicationException.class,
+            ClinicalNoteNotFoundApplicationException.class,
+            MentalStatusExamNotFoundApplicationException.class,
+            RiskAssessmentNotFoundApplicationException.class,
+            TreatmentPlanNotFoundApplicationException.class,
+            TreatmentGoalNotFoundApplicationException.class,
+            ChatConversationNotFoundApplicationException.class,
+            ChatParticipantNotFoundApplicationException.class,
+            ChatMessageNotFoundApplicationException.class,
+            ChatConversationAiSettingNotFoundApplicationException.class,
+            ChatAiRunNotFoundApplicationException.class,
+            ChatAiRunMetricNotFoundApplicationException.class,
+            ChatAiRunErrorNotFoundApplicationException.class,
+            ChatEscalationNotFoundApplicationException.class,
+            ChatEscalationAssignmentNotFoundApplicationException.class,
+            ChatEscalationStatusHistoryNotFoundApplicationException.class
     })
     public ResponseEntity<Map<String, String>> handleNotFound(RuntimeException ex) {
         return ResponseEntity

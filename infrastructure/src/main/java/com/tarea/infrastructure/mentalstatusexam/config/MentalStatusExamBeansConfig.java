@@ -1,0 +1,52 @@
+package com.tarea.infrastructure.mentalstatusexam.config;
+
+import com.tarea.application.mentalstatusexam.usecase.DeleteMentalStatusExamUseCase;
+import com.tarea.application.mentalstatusexam.usecase.GetMentalStatusExamByIdUseCase;
+import com.tarea.application.mentalstatusexam.usecase.ListMentalStatusExamUseCase;
+import com.tarea.application.mentalstatusexam.usecase.RegisterMentalStatusExamUseCase;
+import com.tarea.application.mentalstatusexam.usecase.UpdateMentalStatusExamUseCase;
+import com.tarea.domain.mentalstatusexam.port.repository.MentalStatusExamRepository;
+import com.tarea.infrastructure.mentalstatusexam.adapters.out.persistence.mappers.MentalStatusExamPersistenceMapper;
+import com.tarea.infrastructure.mentalstatusexam.adapters.out.persistence.repositories.MentalStatusExamJpaRepository;
+import com.tarea.infrastructure.mentalstatusexam.adapters.out.persistence.repositories.MentalStatusExamRepositoryAdapter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class MentalStatusExamBeansConfig {
+
+    @Bean
+    public MentalStatusExamPersistenceMapper mentalStatusExamPersistenceMapper() {
+        return new MentalStatusExamPersistenceMapper();
+    }
+
+    @Bean
+    public MentalStatusExamRepository mentalStatusExamRepository(MentalStatusExamJpaRepository repository, MentalStatusExamPersistenceMapper mapper) {
+        return new MentalStatusExamRepositoryAdapter(repository, mapper);
+    }
+
+    @Bean
+    public RegisterMentalStatusExamUseCase registerMentalStatusExamUseCase(MentalStatusExamRepository repository) {
+        return new RegisterMentalStatusExamUseCase(repository);
+    }
+
+    @Bean
+    public GetMentalStatusExamByIdUseCase getMentalStatusExamByIdUseCase(MentalStatusExamRepository repository) {
+        return new GetMentalStatusExamByIdUseCase(repository);
+    }
+
+    @Bean
+    public ListMentalStatusExamUseCase listMentalStatusExamUseCase(MentalStatusExamRepository repository) {
+        return new ListMentalStatusExamUseCase(repository);
+    }
+
+    @Bean
+    public UpdateMentalStatusExamUseCase updateMentalStatusExamUseCase(MentalStatusExamRepository repository) {
+        return new UpdateMentalStatusExamUseCase(repository);
+    }
+
+    @Bean
+    public DeleteMentalStatusExamUseCase deleteMentalStatusExamUseCase(MentalStatusExamRepository repository) {
+        return new DeleteMentalStatusExamUseCase(repository);
+    }
+}
