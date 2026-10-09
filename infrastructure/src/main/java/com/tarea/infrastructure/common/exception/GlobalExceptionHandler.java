@@ -1,5 +1,9 @@
 package com.tarea.infrastructure.common.exception;
 
+import com.tarea.application.auth.exception.EmailAlreadyRegisteredApplicationException;
+import com.tarea.application.auth.exception.InvalidCredentialsApplicationException;
+import com.tarea.application.auth.exception.InvalidRefreshTokenApplicationException;
+import com.tarea.application.auth.exception.UserNotFoundApplicationException;
 import com.tarea.application.citymunicipality.exception.CityMunicipalityNotFoundApplicationException;
 import com.tarea.application.clinicalrecordstatus.exception.ClinicalRecordStatusNotFoundApplicationException;
 import com.tarea.application.country.exception.CountryNotFoundApplicationException;
@@ -118,11 +122,29 @@ public class GlobalExceptionHandler {
             ChatAiRunErrorNotFoundApplicationException.class,
             ChatEscalationNotFoundApplicationException.class,
             ChatEscalationAssignmentNotFoundApplicationException.class,
-            ChatEscalationStatusHistoryNotFoundApplicationException.class
+            ChatEscalationStatusHistoryNotFoundApplicationException.class,
+            UserNotFoundApplicationException.class
     })
     public ResponseEntity<Map<String, String>> handleNotFound(RuntimeException ex) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
+                .body(Map.of("error", ex.getMessage()));
+    }
+
+    @ExceptionHandler({
+            InvalidCredentialsApplicationException.class,
+            InvalidRefreshTokenApplicationException.class
+    })
+    public ResponseEntity<Map<String, String>> handleUnauthorized(RuntimeException ex) {
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(Map.of("error", ex.getMessage()));
+    }
+
+    @ExceptionHandler(EmailAlreadyRegisteredApplicationException.class)
+    public ResponseEntity<Map<String, String>> handleEmailAlreadyRegistered(RuntimeException ex) {
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
                 .body(Map.of("error", ex.getMessage()));
     }
 
